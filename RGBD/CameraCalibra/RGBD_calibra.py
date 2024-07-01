@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 import glob
+import yaml
 
 
 def output_camera_param(camera_matrix, dist_coeffs):
-    """保存相机参数"""
     fs = cv2.FileStorage("CameraParams.yaml", cv2.FILE_STORAGE_WRITE)
     if fs.isOpened():
         # 公共参数
@@ -68,7 +68,7 @@ def main():
     output_camera_param(mtx, dist)
 
     # 去畸变
-    img2 = cv2.imread("./data/color_00000018.jpg")
+    img2 = cv2.imread("./data/color_00000001.jpg")
     h, w = img2.shape[:2]
     newcameramtx, roi = cv2.getOptimalNewCameraMatrix(
         mtx, dist, (w, h), 0, (w, h)

@@ -19,9 +19,9 @@ def main(rgb_path, depth_path, parameter_file):
     rectify_depth = depth_src
 
     # 显示深度图
-    # d8 = cv2.convertScaleAbs(depth_src, alpha=255.0 / 2000)
-    # d_color = cv2.applyColorMap(d8, cv2.COLORMAP_OCEAN)
-    cv2.imshow("Depth (colored)", depth_src)
+    d8 = cv2.convertScaleAbs(depth_src, alpha=255.0 / 2000)
+    d_color = cv2.applyColorMap(d8, cv2.COLORMAP_OCEAN)
+    cv2.imshow("Depth (colored)", d_color)
     cv2.imshow("RGB", rectify_rgb)
 
     # 打印深度图部分值进行检查
@@ -36,7 +36,7 @@ def main(rgb_path, depth_path, parameter_file):
     plt.figure()
     plt.hist(rectify_depth.ravel(), bins=256, range=(0, 2000), fc="k", ec="k")
     plt.title("Depth Image Histogram")
-    plt.xlabel("Depth Value")
+    plt.xlabel("Depth Value（mm）")
     plt.ylabel("Frequency")
     plt.show()
 
@@ -45,8 +45,8 @@ def main(rgb_path, depth_path, parameter_file):
 
 
 if __name__ == "__main__":
-    rgb_path = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/rgb/Color_1.png"
-    depth_path = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/depth/Depth_1.png"
-    parameter_file = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/CameraParams.yaml"
+    rgb_path = "./rgb/Color_1.png"
+    depth_path = "./depth/Depth_1.png"
+    parameter_file = "../CameraCalibra/CameraParams.yaml"
 
     main(rgb_path, depth_path, parameter_file)

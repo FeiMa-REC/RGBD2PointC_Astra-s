@@ -136,9 +136,7 @@ def process_frames(depth_queue, color_queue, lock, mode="record"):
                             )
                             i += 1
                         else:
-                            print(
-                                f"保存图像失败：Depth成功={success_depth}, Color成功={success_color}"
-                            )
+                            print(f"保存图像失败")
 
                     key = cv2.waitKey(1) & 0xFF
                     if key == 27 or key == ord("q"):  # 按下ESC或q键退出
