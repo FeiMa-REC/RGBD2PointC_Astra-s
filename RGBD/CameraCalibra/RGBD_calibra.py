@@ -56,7 +56,7 @@ def main():
             # 将角点在图像上显示
             cv2.drawChessboardCorners(img, (w, h), corners, ret)
             cv2.imshow("findCorners", img)
-            cv2.waitKey(300)
+            cv2.waitKey(0)
     cv2.destroyAllWindows()
 
     # 标定：计算相机内外参数

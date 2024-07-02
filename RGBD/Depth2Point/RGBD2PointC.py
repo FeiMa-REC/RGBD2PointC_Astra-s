@@ -71,7 +71,7 @@ def main(rgb_path, depth_path, parameter_file):
 
     # 显示深度图
     d8 = cv2.convertScaleAbs(depth_src, alpha=255.0 / 2000)
-    d_color = cv2.applyColorMap(d8, cv2.COLORMAP_OCEAN)
+    d_color = cv2.applyColorMap(d8, cv2.COLORMAP_JET)
     cv2.imshow("Depth (colored)", d_color)
     cv2.imshow("RGB", rectify_rgb)
 
@@ -97,8 +97,8 @@ def main(rgb_path, depth_path, parameter_file):
 
 
 if __name__ == "__main__":
-    rgb_path = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/rgb/Color_4.png"
-    depth_path = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/depth/Depth_4.png"
-    parameter_file = "/Users/feima/Desktop/RGBD2PointC_Astra-s/RGBD/CameraParams.yaml"
+    rgb_path = "./rgb/Color_3.png"
+    depth_path = "./depth/Depth_3.png"
+    parameter_file = "../CameraCalibra/CameraParams.yaml"
 
     main(rgb_path, depth_path, parameter_file)

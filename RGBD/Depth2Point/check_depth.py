@@ -20,7 +20,7 @@ def main(rgb_path, depth_path, parameter_file):
 
     # 显示深度图
     d8 = cv2.convertScaleAbs(depth_src, alpha=255.0 / 2000)
-    d_color = cv2.applyColorMap(d8, cv2.COLORMAP_OCEAN)
+    d_color = cv2.applyColorMap(d8, cv2.COLORMAP_JET)
     cv2.imshow("Depth (colored)", d_color)
     cv2.imshow("RGB", rectify_rgb)
 
@@ -36,7 +36,31 @@ def main(rgb_path, depth_path, parameter_file):
     plt.figure()
     plt.hist(rectify_depth.ravel(), bins=256, range=(0, 2000), fc="k", ec="k")
     plt.title("Depth Image Histogram")
-    plt.xlabel("Depth Value（mm）")
+    # 添加最大值、最小值和平均值的标注
+    plt.axvline(np.mean(rectify_depth), color="r", linestyle="dashed", linewidth=1)
+    plt.axvline(np.max(rectify_depth), color="g", linestyle="dashed", linewidth=1)
+    plt.axvline(np.min(rectify_depth), color="b", linestyle="dashed", linewidth=1)
+
+    # 在图中添加文本标签
+    plt.text(
+        np.mean(rectify_depth) + 10,
+        plt.ylim()[1] * 0.9,
+        f"Mean: {np.mean(rectify_depth):.2f}",
+        color="r",
+    )
+    plt.text(
+        np.max(rectify_depth) + 10,
+        plt.ylim()[1] * 0.8,
+        f"Max: {np.max(rectify_depth):.2f}",
+        color="g",
+    )
+    plt.text(
+        np.min(rectify_depth) + 10,
+        plt.ylim()[1] * 0.7,
+        f"Min: {np.min(rectify_depth):.2f}",
+        color="b",
+    )
+    plt.xlabel("Depth Value(mm)")
     plt.ylabel("Frequency")
     plt.show()
 
