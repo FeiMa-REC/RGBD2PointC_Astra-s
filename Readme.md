@@ -14,6 +14,15 @@
   - Depth2Point: 提供点云转换脚本
   - calibxxx.pdf: 6x9标定图
 
+### 项目演示
+
+输入RGB和深度图像
+
+![](./imgs/Color.png)![](./imgs/Depth.png)
+
+输出点云
+
+![](./imgs/test.gif)
 
 ### 标定注意事项
 
