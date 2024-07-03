@@ -16,7 +16,7 @@
 
 ### 项目演示
 
-输入RGB和深度图像
+输入RGB和深度图像(未进行染色)
 
 <center class="half">
     <img src="./imgs/Color.png" width="400">
